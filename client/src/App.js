@@ -7,6 +7,7 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import Navbar from './components/Navbar';
 
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem('id_token');
@@ -31,6 +32,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
+          <Navbar />
       </Router>
     </ApolloProvider>
   );
