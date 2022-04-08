@@ -7,7 +7,7 @@ export const QUERY_ME = gql`
       username
       email
       savedRooms {
-        roomId: String
+        roomId: Int
         name: String
         street: String
         city: String

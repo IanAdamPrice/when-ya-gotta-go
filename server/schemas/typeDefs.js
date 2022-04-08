@@ -10,10 +10,10 @@ const typeDefs = gql `
   }
 
   type Bathroom {
-    roomId: Int
-    name: String
-    street: String
-    city: String
+    roomId: Int!
+    name: String!
+    street: String!
+    city: String!
     state: String
     accessible: Boolean
     unisex: Boolean
@@ -23,10 +23,10 @@ const typeDefs = gql `
   }
 
   input roomInput {
-    roomId: Int
-    name: String
-    street: String
-    city: String
+    roomId: Int!
+    name: String!
+    street: String!
+    city: String!
     state: String
     accessible: Boolean
     unisex: Boolean

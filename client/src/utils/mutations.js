@@ -31,7 +31,7 @@ export const SAVE_ROOM = gql`
       username
       email
       savedRooms {
-        roomId: Number
+        roomId: Int
         name: String
         street: String
         city: String
@@ -53,7 +53,7 @@ export const REMOVE_ROOM = gql`
       username
       email
       savedRooms {
-        roomId: Number
+        roomId: Int
         name: String
         street: String
         city: String

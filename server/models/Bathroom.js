@@ -14,7 +14,6 @@ const bathroomSchema = new Schema({
     type: String,
     required: true,
   },
-  // saved book id from GoogleBooks
   city: {
     type: String,
     required: true,
