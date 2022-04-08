@@ -20,7 +20,6 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    // set savedRooms to be an array of data that adheres to the bookSchema
     savedRooms: [bathroomSchema],
   },
   {
