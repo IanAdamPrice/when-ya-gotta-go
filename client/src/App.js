@@ -9,7 +9,7 @@ import {
 import { setContext } from '@apollo/client/link/context';
 
 import Navbar from './components/Navbar';
-import SavedRooms from './pages/SavedBooks';
+import SavedRooms from './pages/SavedRooms';
 
 
 const authLink = setContext((_, { headers }) => {
