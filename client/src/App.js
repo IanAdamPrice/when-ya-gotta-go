@@ -37,7 +37,7 @@ function App() {
       <Router>
           <Navbar />
           <Switch>
-            <Route exact path='/saved' component={SavedRooms} />
+            <Route exact path='/' component={SavedRooms} />
           </Switch>
       </Router>
     </ApolloProvider>
