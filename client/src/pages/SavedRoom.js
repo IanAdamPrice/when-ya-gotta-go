@@ -27,7 +27,7 @@ const SavedRooms = () => {
       });
 
       // upon success, remove room's id from localStorage
-      removeBRoomId(roomId);
+      removeRoomId(roomId);
     } catch (err) {
       console.error(err);
     }
