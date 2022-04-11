@@ -31,16 +31,16 @@ export const SAVE_ROOM = gql`
       username
       email
       savedRooms {
-        roomId: Int
-        name: String
-        street: String
-        city: String
-        state: String
-        accessible: Boolean
-        unisex: Boolean
-        changing_table: Boolean
-        directions: String
-        comment: String
+        roomId
+        name
+        street
+        city
+        state
+        accessible
+        unisex
+        changing_table
+        directions
+        comment
       }
     }
   }
@@ -53,16 +53,16 @@ export const REMOVE_ROOM = gql`
       username
       email
       savedRooms {
-        roomId: Int
-        name: String
-        street: String
-        city: String
-        state: String
-        accessible: Boolean
-        unisex: Boolean
-        changing_table: Boolean
-        directions: String
-        comment: String
+        roomId
+        name
+        street
+        city
+        state
+        accessible
+        unisex
+        changing_table
+        directions
+        comment
       }
     }
   }
