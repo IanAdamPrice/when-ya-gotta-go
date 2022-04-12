@@ -2,7 +2,7 @@ const { Schema } = require('mongoose');
 
 const bathroomSchema = new Schema({
   roomId: {
-    type: Number,
+    type: String,
     required: true
   },
   name: {
@@ -23,10 +23,7 @@ const bathroomSchema = new Schema({
   unisex: {
     type: Boolean,
   },
-  changing_table: {
-    type: Boolean,
-  },
-  directions: {
+  direction: {
     type: String,
   },
   comment: {

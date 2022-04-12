@@ -38,7 +38,6 @@ export const SAVE_ROOM = gql`
         state
         accessible
         unisex
-        changing_table
         direction
         comment
       }
@@ -60,7 +59,6 @@ export const REMOVE_ROOM = gql`
         state
         accessible
         unisex
-        changing_table
         direction
         comment
       }
