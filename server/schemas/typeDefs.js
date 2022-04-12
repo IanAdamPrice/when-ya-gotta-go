@@ -11,27 +11,27 @@ const typeDefs = gql `
 
   type Bathroom {
     roomId: Int!
-    name: String!
-    street: String!
-    city: String!
+    name: String
+    street: String
+    city: String
     state: String
     accessible: Boolean
     unisex: Boolean
     changing_table: Boolean
-    directions: String
+    direction: String
     comment: String
   }
 
   input roomInput {
     roomId: Int!
-    name: String!
-    street: String!
-    city: String!
+    name: String
+    street: String
+    city: String
     state: String
     accessible: Boolean
     unisex: Boolean
     changing_table: Boolean
-    directions: String
+    direction: String
     comment: String
   }
 

@@ -53,16 +53,8 @@ const SearchRooms = () => {
       const { items } = await response.json();
 
       const roomData = items.map((restroom) => ({
-        roomId: restroom.id,
-        name: restroom.name,
-        street: restroom.street,
-        city: restroom.city,
-        state: restroom.state,
-        accessible: restroom.accessible,
-        unisex: restroom.unisex,
-        changing_table: restroom.changing_table,
-        directions: restroom.directions,
-        comment: restroom.comment
+        roomId: restroom.restroom_id,
+        name: restroom.restroom.name,
       }));
 
       setSearchedRooms(roomData);

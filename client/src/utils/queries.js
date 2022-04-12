@@ -15,7 +15,7 @@ export const QUERY_ME = gql`
         accessible
         unisex
         changing_table
-        directions
+        direction
         comment
       }
     }

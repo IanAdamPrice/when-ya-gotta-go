@@ -23,7 +23,7 @@ const resolvers = {
 
       return { token, user };
     },
-    login: async (parent, { email, password }) => {
+    login: async (_parent, { email, password }) => {
       const user = await User.findOne({ email });
 
       if (!user) {
@@ -39,7 +39,7 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    saveRoom: async (parent, { roomData }, context) => {
+    saveRoom: async (_parent, { roomData }, context) => {
       if (context.user) {
         const updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
@@ -52,7 +52,7 @@ const resolvers = {
 
       throw new AuthenticationError('You need to be logged in!');
     },
-    removeRoom: async (parent, { roomId }, context) => {
+    removeRoom: async (_parent, { roomId }, context) => {
       if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user.id },

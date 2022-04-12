@@ -40,7 +40,8 @@ function App() {
           <Switch>
           <Route exact path='/' component={SearchRooms} />
           <Route exact path='/saved' component={SavedRooms} />
-          <Route render={() => <h1 className='display-2'>Wrong page!</h1>} />          </Switch>
+          <Route render={() => <h1 className='display-2'>Wrong page!</h1>} />          
+          </Switch>
       </Router>
     </ApolloProvider>
   );
