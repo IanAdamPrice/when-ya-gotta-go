@@ -17,23 +17,19 @@ import { saveRoomIds, getSavedRoomIds } from '../utils/localStorage';
 import Auth from '../utils/auth';
 
 const SearchRooms = () => {
-  // create state for holding returned google api data
   const [searchedRooms, setSearchedRooms] = useState([]);
-  // create state for holding our search field data
+
   const [searchInput, setSearchInput] = useState('');
 
-  // create state to hold saved bookId values
   const [savedRoomIds, setSavedRoomIds] = useState(getSavedRoomIds());
 
   const [saveRoom, {error}] = useMutation(SAVE_ROOM);
 
-  // set up useEffect hook to save `savedBookIds` list to localStorage on component unmount
-  // learn more here: https://reactjs.org/docs/hooks-effect.html#effects-with-cleanup
+
   useEffect(() => {
     return () => saveRoomIds(savedRoomIds);
   });
 
-  // create method to search for books and set state on form submit
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
@@ -43,20 +39,30 @@ const SearchRooms = () => {
 
     try {
       const response = await fetch(
-        `https://www.refugerestrooms.org/api/v1/restrooms/search?page=1&per_page=10&offset=0&query=${searchInput}`
+        `https://www.refugerestrooms.org/api/v1/restrooms/search?per_page=10&query=${searchInput}`
       );
 
       if (!response.ok) {
         throw new Error('something went wrong!');
       }
 
-      const { items } = await response.json();
+      const items  = await response.json();
+      console.log(items)
+      console.log(searchInput)
 
-      const roomData = items.map((restroom) => ({
-        roomId: restroom.restroom_id,
-        name: restroom.restroom.name,
+      const roomData = items.map((restrooms) => ({
+        roomId: restrooms.id,
+        name: restrooms.name,
+        street: restrooms.street,
+        city: restrooms.city,
+        state: restrooms.state,
+        accessible: restrooms.accessible,
+        unisex: restrooms.unisex,
+        direction: restrooms.directions,
+        comment: restrooms.comment
       }));
 
+      console.log(roomData)
       setSearchedRooms(roomData);
       setSearchInput('');
     } catch (err) {
@@ -64,12 +70,9 @@ const SearchRooms = () => {
     }
   };
 
-  // create function to handle saving a book to our database
   const handleSaveRoom = async (roomId) => {
-    // find the book in `searchedBooks` state by the matching id
-    const roomToSave = searchedRooms.find((room) => room.roomId === roomId);
+    const roomToSave = searchedRooms.find((restrooms) => restrooms.roomId === roomId);
 
-    // get token
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
     if (!token) {
@@ -89,12 +92,12 @@ const SearchRooms = () => {
 
   return (
     <>
-      <Jumbotron fluid className="text-light bg-dark">
+      <Jumbotron fluid className="jumbotron">
         <Container>
-          <h1>Search for Rooms!</h1>
+          <h1 className='text-center'>Find a restroom closest to you!</h1>
           <Form onSubmit={handleFormSubmit}>
             <Form.Row>
-              <Col xs={12} md={8}>
+              <Col xs={12} md={12}>
                 <Form.Control
                   name="searchInput"
                   value={searchInput}
@@ -104,8 +107,8 @@ const SearchRooms = () => {
                   placeholder="Search for a room"
                 />
               </Col>
-              <Col xs={12} md={4}>
-                <Button type="submit" variant="success" size="lg">
+              <Col xs={12} md={12}>
+                <Button type="submit" variant="danger" size="lg">
                   Submit Search
                 </Button>
               </Col>
@@ -114,20 +117,20 @@ const SearchRooms = () => {
         </Container>
       </Jumbotron>
 
-      <Container>
-        <h2>
+      <Container className="container text-light">
+        <h2 className='text-center'>
           {searchedRooms.length
-            ? `Viewing ${searchedRooms.length} results:`
+            ? `Here are ${searchedRooms.length} restrooms around you!:`
             : 'Search for a room to begin'}
         </h2>
-        <CardColumns>
+        <CardColumns className="bg-dark">
           {searchedRooms.map((room) => {
             return (
               <Card key={room.roomId} border="dark">
-                <Card.Body>
-                  <Card.Title>{room.title}</Card.Title>
-                  <p className="small">Authors: {room.authors}</p>
-                  <Card.Text>{room.description}</Card.Text>
+                <Card.Body className='text-primary'>
+                  <Card.Title>{room.name}</Card.Title>
+                  <p className="small">Address: {room.street}</p>
+                  <Card.Text>{room.city}</Card.Text>
                   {Auth.loggedIn() && (
                     <Button
                       disabled={savedRoomIds?.some(
@@ -138,7 +141,7 @@ const SearchRooms = () => {
                     >
                       {savedRoomIds?.some((savedId) => savedId === room.roomId)
                         ? 'Room Already Saved!'
-                        : 'Save This ROom!'}
+                        : 'Save This Room!'}
                     </Button>
                   )}
                 </Card.Body>
