@@ -56,14 +56,11 @@ const SavedRooms = () => {
         <CardColumns>
           {userData.savedRooms?.map((room) => {
             return (
-              <Card key={room.roomId} border='dark'>
-                {room.image ? (
-                  <Card.Img src={room.image} alt={`The cover for ${room.title}`} variant='top' />
-                ) : null}
-                <Card.Body>
-                  <Card.Title>{room.title}</Card.Title>
-                  <p className='small'>Authors: {room.authors}</p>
-                  <Card.Text>{room.description}</Card.Text>
+              <Card key={bathroom.roomId} border='dark'>
+                <Card.Body className='text-primary'>
+                  <Card.Title>{bathroom.name}</Card.Title>
+                  <p className='small'>Adress: {bathroom.street}</p>
+                  <Card.Text>{bathroom.city}</Card.Text>
                   <Button
                     className='btn-block btn-danger'
                     onClick={() => handleDeleteRoom(room.roomId)}>

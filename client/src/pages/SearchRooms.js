@@ -126,7 +126,7 @@ const SearchRooms = () => {
         <CardColumns className="bg-dark">
           {searchedRooms.map((bathroom) => {
             return (
-              <Card key={bathroom.bathroomId} border="dark">
+              <Card key={bathroom.roomId} border="dark">
                 <Card.Body className='text-primary'>
                   <Card.Title>{bathroom.name}</Card.Title>
                   <p className="small">Address: {bathroom.street}</p>
