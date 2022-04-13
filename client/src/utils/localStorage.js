@@ -24,7 +24,7 @@ export const removeRoomId = (roomId) => {
   }
 
   const updatedSavedRoomIds = savedRoomIds?.filter((savedRoomId) => savedRoomId !== roomId);
-  localStorage.setItem('saved_room', JSON.stringify(updatedSavedRoomIds));
+  localStorage.setItem('saved_rooms', JSON.stringify(updatedSavedRoomIds));
 
   return true;
 };
