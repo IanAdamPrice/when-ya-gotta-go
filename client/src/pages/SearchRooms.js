@@ -70,8 +70,8 @@ const SearchRooms = () => {
     }
   };
 
-  const handleSaveRoom = async (bathroomId) => {
-    const roomToSave = searchedRooms.find((bathroom) => bathroom.bathroomId === bathroomId);
+  const handleSaveRoom = async (roomId) => {
+    const roomToSave = searchedRooms.find((bathroom) => bathroom.roomId === roomId);
 
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
@@ -84,7 +84,7 @@ const SearchRooms = () => {
         variables:  {roomData: { ...roomToSave }},
       });
       console.log(savedRoomIds);
-      setSavedRoomIds([...savedRoomIds, roomToSave.bathroomId]);
+      setSavedRoomIds([...savedRoomIds, roomToSave.roomId]);
     } catch (e) {
       console.error(e);
     }
@@ -134,10 +134,10 @@ const SearchRooms = () => {
                   {Auth.loggedIn() && (
                     <Button
                       disabled={savedRoomIds?.some(
-                        (savedId) => savedId === bathroom.bathroomId
+                        (savedId) => savedId === bathroom.roomId
                       )}
                       className="btn-block btn-info"
-                      onClick={() => handleSaveRoom(bathroom.bathroomId)}
+                      onClick={() => handleSaveRoom(bathroom.roomId)}
                     >
                       {savedRoomIds?.some((savedId) => savedId === bathroom.roomId)
                         ? 'Room Already Saved!'
