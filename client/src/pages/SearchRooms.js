@@ -60,6 +60,8 @@ const SearchRooms = () => {
         unisex: bathroom.unisex,
         direction: bathroom.directions,
         comment: bathroom.comment,
+        latitude: bathroom.latitude,
+        longitude: bathroom.longitude
       }));
 
       console.log(roomData)

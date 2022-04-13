@@ -40,6 +40,8 @@ export const SAVE_ROOM = gql`
         unisex
         direction
         comment
+        latitude
+        longitude
       }
     }
   }
@@ -61,6 +63,8 @@ export const REMOVE_ROOM = gql`
         unisex
         direction
         comment
+        latitude
+        longitude
       }
     }
   }

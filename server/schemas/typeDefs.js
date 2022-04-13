@@ -19,6 +19,8 @@ const typeDefs = gql`
     unisex: Boolean
     direction: String
     comment: String
+    latitude: Int
+    longitude: Int
   }
 
   input roomInput {
@@ -31,6 +33,8 @@ const typeDefs = gql`
     unisex: Boolean
     direction: String
     comment: String
+    latitude: Int
+    longitude: Int
   }
 
   type Auth {
