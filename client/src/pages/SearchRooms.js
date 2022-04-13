@@ -50,16 +50,18 @@ const SearchRooms = () => {
       console.log(items)
       console.log(searchInput)
 
-      const roomData = items.map((restrooms) => ({
-        roomId: restrooms.id,
-        name: restrooms.name,
-        street: restrooms.street,
-        city: restrooms.city,
-        state: restrooms.state,
-        accessible: restrooms.accessible,
-        unisex: restrooms.unisex,
-        direction: restrooms.directions,
-        comment: restrooms.comment
+      const roomData = items.map((room) => ({
+        roomId: room.id,
+        name: room.name,
+        street: room.street,
+        city: room.city,
+        state: room.state,
+        accessible: room.accessible,
+        unisex: room.unisex,
+        direction: room.directions,
+        comment: room.comment,
+        latitude: room.latitude,
+        longitude: room.longitude
       }));
 
       console.log(roomData)
@@ -71,7 +73,7 @@ const SearchRooms = () => {
   };
 
   const handleSaveRoom = async (roomId) => {
-    const roomToSave = searchedRooms.find((restrooms) => restrooms.roomId === roomId);
+    const roomToSave = searchedRooms.find((room) => room.roomId === roomId);
 
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
@@ -120,7 +122,7 @@ const SearchRooms = () => {
       <Container className="container text-light">
         <h2 className='text-center'>
           {searchedRooms.length
-            ? `Here are ${searchedRooms.length} restrooms around you!:`
+            ? `Here are ${searchedRooms.length} room around you!:`
             : 'Search for a room to begin'}
         </h2>
         <CardColumns className="bg-dark">
