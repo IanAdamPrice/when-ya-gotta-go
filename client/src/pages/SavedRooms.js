@@ -63,7 +63,7 @@ const SavedRooms = () => {
                   <Card.Text>{bathroom.city}</Card.Text>
                   <Button
                     className='btn-block btn-danger'
-                    onClick={() => handleDeleteRoom(room.roomId)}>
+                    onClick={() => handleDeleteRoom(bathroom.roomId)}>
                     Delete this room!
                   </Button>
                   {error && <span className="ml-2">Something went wrong...</span>}
