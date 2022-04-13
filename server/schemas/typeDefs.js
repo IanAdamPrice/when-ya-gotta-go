@@ -1,6 +1,9 @@
 const { gql } = require('apollo-server-express');
 
+
 const typeDefs = gql`
+  scalar decimal
+
   type User {
     _id: ID!
     username: String
@@ -19,8 +22,8 @@ const typeDefs = gql`
     unisex: Boolean
     direction: String
     comment: String
-    latitude: Int
-    longitude: Int
+    latitude: Decimal
+    longitude: Decimal
   }
 
   input roomInput {
@@ -33,8 +36,8 @@ const typeDefs = gql`
     unisex: Boolean
     direction: String
     comment: String
-    latitude: Int
-    longitude: Int
+    latitude: Decimal
+    longitude: Decimal
   }
 
   type Auth {

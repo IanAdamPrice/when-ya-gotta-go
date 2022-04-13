@@ -1,4 +1,6 @@
 const typeDefs = require('./typeDefs');
 const resolvers = require('./resolvers');
+import { makeExecutableSchema } from 'graphql-tools';
 
-module.exports = { typeDefs, resolvers };
+
+export default makeExecutableSchema({ typeDefs, resolvers });

@@ -1,8 +1,11 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User } = require('../models');
 const { signToken } = require('../utils/auth');
+import GraphQLDecimal from 'graphql-type-decimal';
 
 const resolvers = {
+  Decimal: GraphQLDecimal,
+
   Query: {
     me: async (_parent, args, context) => {
       if (context.user) {
