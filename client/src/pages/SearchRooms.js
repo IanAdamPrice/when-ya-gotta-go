@@ -139,7 +139,7 @@ const SearchRooms = () => {
                       className="btn-block btn-info"
                       onClick={() => handleSaveRoom(bathroom.bathroomId)}
                     >
-                      {savedRoomIds?.some((savedId) => savedId === bathroom.bathroomId)
+                      {savedRoomIds?.some((savedId) => savedId === bathroom.roomId)
                         ? 'Room Already Saved!'
                         : 'Save This Room!'}
                     </Button>
