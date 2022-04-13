@@ -16,8 +16,6 @@ export const QUERY_ME = gql`
         unisex
         direction
         comment
-        latitude
-        longitude
       }
     }
   }

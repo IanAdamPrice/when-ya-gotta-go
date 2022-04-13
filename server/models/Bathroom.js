@@ -29,12 +29,7 @@ const bathroomSchema = new Schema({
   comment: {
     type: String,
   },
-  latitude: {
-    type: String,
-  },
-  longitude: {
-    type: String,
-  }
+
 });
 
 module.exports = bathroomSchema;

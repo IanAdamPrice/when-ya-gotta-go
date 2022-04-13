@@ -19,8 +19,6 @@ const typeDefs = gql`
     unisex: Boolean
     direction: String
     comment: String
-    latitude: String
-    longitude: String
   }
 
   input roomInput {
@@ -33,9 +31,7 @@ const typeDefs = gql`
     unisex: Boolean
     direction: String
     comment: String
-    latitude: String
-    longitude: String
-  
+  }
 
   type Auth {
     token: ID!

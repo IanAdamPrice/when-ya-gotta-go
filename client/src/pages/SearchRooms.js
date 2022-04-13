@@ -39,29 +39,27 @@ const SearchRooms = () => {
 
     try {
       const response = await fetch(
-        `https://www.refugerestrooms.org/api/v1/restrooms/search?per_page=10&query=${searchInput}`
+        `https://www.refugerestrooms.org/api/v1/restrooms/search?query=${searchInput}`
       );
 
       if (!response.ok) {
         throw new Error('something went wrong!');
       }
 
-      const items  = await response.json();
-      console.log(items)
+      const items   = await response.json([]);
+      console.log({items})
       console.log(searchInput)
 
-      const roomData = items.map((room) => ({
-        roomId: room.id,
-        name: room.name,
-        street: room.street,
-        city: room.city,
-        state: room.state,
-        accessible: room.accessible,
-        unisex: room.unisex,
-        direction: room.directions,
-        comment: room.comment,
-        latitude: room.latitude,
-        longitude: room.longitude
+      const roomData = items.map((bathroom) => ({
+        roomId: bathroom.id,
+        name: bathroom.name,
+        street: bathroom.street,
+        city: bathroom.city,
+        state: bathroom.state,
+        accessible: bathroom.accessible,
+        unisex: bathroom.unisex,
+        direction: bathroom.directions,
+        comment: bathroom.comment,
       }));
 
       console.log(roomData)
@@ -72,8 +70,8 @@ const SearchRooms = () => {
     }
   };
 
-  const handleSaveRoom = async (roomId) => {
-    const roomToSave = searchedRooms.find((room) => room.roomId === roomId);
+  const handleSaveRoom = async (bathroomId) => {
+    const roomToSave = searchedRooms.find((bathroom) => bathroom.bathroomId === bathroomId);
 
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
@@ -83,10 +81,10 @@ const SearchRooms = () => {
 
     try {
       await saveRoom({
-        variables: { roomData: { ...roomToSave } },
+        variables:  {roomData: { ...roomToSave }},
       });
       console.log(savedRoomIds);
-      setSavedRoomIds([...savedRoomIds, roomToSave.roomId]);
+      setSavedRoomIds([...savedRoomIds, roomToSave.bathroomId]);
     } catch (e) {
       console.error(e);
     }
@@ -126,22 +124,22 @@ const SearchRooms = () => {
             : 'Search for a room to begin'}
         </h2>
         <CardColumns className="bg-dark">
-          {searchedRooms.map((room) => {
+          {searchedRooms.map((bathroom) => {
             return (
-              <Card key={room.roomId} border="dark">
+              <Card key={bathroom.bathroomId} border="dark">
                 <Card.Body className='text-primary'>
-                  <Card.Title>{room.name}</Card.Title>
-                  <p className="small">Address: {room.street}</p>
-                  <Card.Text>{room.city}</Card.Text>
+                  <Card.Title>{bathroom.name}</Card.Title>
+                  <p className="small">Address: {bathroom.street}</p>
+                  <Card.Text>{bathroom.city}</Card.Text>
                   {Auth.loggedIn() && (
                     <Button
                       disabled={savedRoomIds?.some(
-                        (savedId) => savedId === room.roomId
+                        (savedId) => savedId === bathroom.bathroomId
                       )}
                       className="btn-block btn-info"
-                      onClick={() => handleSaveRoom(room.roomId)}
+                      onClick={() => handleSaveRoom(bathroom.bathroomId)}
                     >
-                      {savedRoomIds?.some((savedId) => savedId === room.roomId)
+                      {savedRoomIds?.some((savedId) => savedId === bathroom.bathroomId)
                         ? 'Room Already Saved!'
                         : 'Save This Room!'}
                     </Button>
