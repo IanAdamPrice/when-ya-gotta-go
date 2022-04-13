@@ -54,7 +54,7 @@ const SavedRooms = () => {
             : 'You have no saved rooms!'}
         </h2>
         <CardColumns>
-          {userData.savedRooms?.map((room) => {
+          {userData.savedRooms?.map((bathroom) => {
             return (
               <Card key={bathroom.roomId} border='dark'>
                 <Card.Body className='text-primary'>
