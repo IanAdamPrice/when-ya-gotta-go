@@ -2,7 +2,7 @@ const { Schema } = require('mongoose');
 
 const bathroomSchema = new Schema({
   roomId: {
-    type: String,
+    type: Number,
     required: true
   },
   name: {

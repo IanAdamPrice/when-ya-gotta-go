@@ -10,7 +10,7 @@ const typeDefs = gql`
   }
 
   type Bathroom {
-    roomId: String!
+    roomId: Int!
     name: String
     street: String
     city: String
@@ -24,7 +24,7 @@ const typeDefs = gql`
   }
 
   input roomInput {
-    roomId: String
+    roomId: Int
     name: String
     street: String
     city: String
@@ -35,7 +35,7 @@ const typeDefs = gql`
     comment: String
     latitude: String
     longitude: String
-  }
+  
 
   type Auth {
     token: ID!
