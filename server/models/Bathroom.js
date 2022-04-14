@@ -28,6 +28,12 @@ const bathroomSchema = new Schema({
   },
   comment: {
     type: String,
+  },
+  upvote: {
+    type: Number
+  },
+  downvote: {
+    type: Number
   }
 });
 
