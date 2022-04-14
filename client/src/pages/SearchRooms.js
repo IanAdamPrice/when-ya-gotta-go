@@ -160,7 +160,7 @@ const SearchRooms = () => {
                       onClick={() => handleSaveRoom(bathroom.roomId)}
                     >
                       {savedRoomIds?.some((savedId) => savedId === bathroom.roomId)
-                        ? ''
+                        ? 'Room Already Saved!'
                         : 'Rate your visit!'}
                     </Button>
                   )}
