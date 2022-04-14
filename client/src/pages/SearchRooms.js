@@ -111,7 +111,7 @@ const SearchRooms = () => {
                   onChange={(e) => setSearchInput(e.target.value)}
                   type="text"
                   size="lg"
-                  placeholder="Search for a room"
+                  placeholder="Enter your location!"
                 />
               </Col>
               <Col xs={12} md={4}>
@@ -146,7 +146,7 @@ const SearchRooms = () => {
                       disabled={savedRoomIds?.some(
                         (savedId) => savedId === bathroom.roomId
                       )}
-                      className="btn-block btn-info w-25"
+                      className="saveRoom btn-block btn-primary w-25"
                       onClick={() => handleSaveRoom(bathroom.roomId)}
                     >
                       {savedRoomIds?.some((savedId) => savedId === bathroom.roomId)
@@ -156,11 +156,11 @@ const SearchRooms = () => {
                   )}
                                     {Auth.loggedIn() && (
                     <Button
-                      className="btn-block btn-info w-25"
+                      className="rateRoom btn-block btn-primary w-25"
                       onClick={() => handleSaveRoom(bathroom.roomId)}
                     >
                       {savedRoomIds?.some((savedId) => savedId === bathroom.roomId)
-                        ? 'Room Already Saved!'
+                        ? ''
                         : 'Rate your visit!'}
                     </Button>
                   )}
