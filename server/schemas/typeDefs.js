@@ -22,6 +22,8 @@ const typeDefs = gql`
     unisex: Boolean
     direction: String
     comment: String
+    upvote: Int
+    downvote: Int
   }
 
   input roomInput {
@@ -34,6 +36,8 @@ const typeDefs = gql`
     unisex: Boolean
     direction: String
     comment: String
+    upvote: Int
+    downvote: Int
   }
 
   type Auth {
