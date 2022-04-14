@@ -60,7 +60,8 @@ const SearchRooms = () => {
         unisex: bathroom.unisex,
         direction: bathroom.directions,
         comment: bathroom.comment,
-        upvote: bathroom.upvote
+        upvote: bathroom.upvote,
+        downvote: bathroom.downvote
       }));
 
       console.log(roomData)
