@@ -18,7 +18,7 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
+  "start_url": "https://boiling-scrubland-07440.herokuapp.com/",
   "scope": "https://boiling-scrubland-07440.herokuapp.com/",
   "display": "standalone",
   "theme_color": "#ffffff",
