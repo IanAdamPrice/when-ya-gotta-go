@@ -19,6 +19,8 @@ import { saveRoomIds, getSavedRoomIds } from '../utils/localStorage';
 import Auth from '../utils/auth';
 
 
+
+
 const SearchRooms = () => {
   const [searchedRooms, setSearchedRooms] = useState([]);
 
@@ -122,11 +124,11 @@ const SearchRooms = () => {
         </Container>
       </Jumbotron>
 
-      <Container className="container text-light" >
-        <h2 className='text-center'>
+      <Container className="containers text-light">
+        <h2 className='search text-center'>
           {searchedRooms.length
             ? `Here are ${searchedRooms.length} room around you!:`
-            : 'Search for a room to begin'}
+            : 'Find a restroom near you!'}
         </h2>
         <Card className="bg-dark">
           {searchedRooms.map((bathroom) => {

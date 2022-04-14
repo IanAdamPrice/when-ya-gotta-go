@@ -5,7 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: black;
+  background-color: white;
+  background-image: url("./assets/toilet.jpeg");
 }
 
 code {
@@ -18,6 +19,10 @@ code {
 }
 
 h1 {
+  color: white;
+}
+
+h2 {
   color: white;
 }
 
@@ -46,5 +51,16 @@ h1 {
 
 .classBody {
   position: relative;
+}
+
+.containers {
+  background-color: white;
+  border: 1px;
+  border-radius: 1px;
+}
+
+.search {
+  color: white;
+  background-color: black;
 }
 
