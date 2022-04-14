@@ -16,6 +16,8 @@ export const QUERY_ME = gql`
         unisex
         direction
         comment
+        upvote
+        downvote
       }
     }
   }
