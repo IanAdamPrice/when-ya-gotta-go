@@ -10,11 +10,14 @@ import {
   CardColumns,
 } from 'react-bootstrap';
 
+import { Link } from 'react-router-dom'
+
 import { useMutation } from '@apollo/client';
 import { SAVE_ROOM } from '../utils/mutations';
 import { saveRoomIds, getSavedRoomIds } from '../utils/localStorage';
 
 import Auth from '../utils/auth';
+
 
 const SearchRooms = () => {
   const [searchedRooms, setSearchedRooms] = useState([]);
@@ -93,13 +96,13 @@ const SearchRooms = () => {
   };
 
   return (
-    <>
+    <div>
       <Jumbotron fluid className="jumbotron">
         <Container>
           <h1 className='text-center'>Find a restroom closest to you!</h1>
           <Form onSubmit={handleFormSubmit}>
             <Form.Row>
-              <Col xs={12} md={12}>
+              <Col xs={12} md={8}>
                 <Form.Control
                   name="searchInput"
                   value={searchInput}
@@ -109,7 +112,7 @@ const SearchRooms = () => {
                   placeholder="Search for a room"
                 />
               </Col>
-              <Col xs={12} md={12}>
+              <Col xs={12} md={4}>
                 <Button type="submit" variant="danger" size="lg">
                   Submit Search
                 </Button>
@@ -119,26 +122,29 @@ const SearchRooms = () => {
         </Container>
       </Jumbotron>
 
-      <Container className="container text-light">
+      <Container className="container text-light" >
         <h2 className='text-center'>
           {searchedRooms.length
             ? `Here are ${searchedRooms.length} room around you!:`
             : 'Search for a room to begin'}
         </h2>
-        <CardColumns className="bg-dark">
+        <Card className="bg-dark">
           {searchedRooms.map((bathroom) => {
             return (
               <Card key={bathroom.roomId} border="dark">
-                <Card.Body className='text-primary'>
-                  <Card.Title>{bathroom.name}</Card.Title>
-                  <p className="small">Address: {bathroom.street}</p>
-                  <Card.Text>{bathroom.city}</Card.Text>
+                <Card.Body className='classBody text-primary'>
+                  <Card.Title className="title"><Link to="./SingleRoom">{bathroom.name}</Link></Card.Title>
+                  <p className="small">Address: {bathroom.street}, {bathroom.city}, <br />{bathroom.state}</p>
+                  <Card.Text className='body'>{bathroom.direction}<br /> {bathroom.comment}</Card.Text>
+                  <h6 className='upvote'>Upvotes {bathroom.upvote}</h6>
+                  <br />
+                  <h6 className='downvote'>Downvotes {bathroom.downvote}</h6>
                   {Auth.loggedIn() && (
                     <Button
                       disabled={savedRoomIds?.some(
                         (savedId) => savedId === bathroom.roomId
                       )}
-                      className="btn-block btn-info"
+                      className="btn-block btn-info w-25"
                       onClick={() => handleSaveRoom(bathroom.roomId)}
                     >
                       {savedRoomIds?.some((savedId) => savedId === bathroom.roomId)
@@ -146,13 +152,23 @@ const SearchRooms = () => {
                         : 'Save This Room!'}
                     </Button>
                   )}
+                                    {Auth.loggedIn() && (
+                    <Button
+                      className="btn-block btn-info w-25"
+                      onClick={() => handleSaveRoom(bathroom.roomId)}
+                    >
+                      {savedRoomIds?.some((savedId) => savedId === bathroom.roomId)
+                        ? 'Room Already Saved!'
+                        : 'Rate your visit!'}
+                    </Button>
+                  )}
                 </Card.Body>
               </Card>
             );
           })}
-        </CardColumns>
+        </Card>
       </Container>
-    </>
+    </div>
   );
 };
 

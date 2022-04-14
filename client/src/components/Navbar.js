@@ -15,9 +15,17 @@ const AppNavbar = () => {
       <Navbar bg='dark' variant='dark' expand='lg'>
         <Container fluid>
           <Navbar.Brand as={Link} to='/'>
-            Public Restroom Search
+            When Ya Gotta Go                
+
           </Navbar.Brand>
           <Navbar.Toggle aria-controls='navbar' />
+          <img 
+                  src={require ("../assets/restroom.jpeg")} 
+                  id="restroom" 
+                  className="restroom" 
+                  alt="restroom sign"
+                  
+                />
           <Navbar.Collapse id='navbar'>
             <Nav className='ml-auto'>
               <Nav.Link as={Link} to='/'>

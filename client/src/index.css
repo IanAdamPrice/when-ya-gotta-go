@@ -21,3 +21,30 @@ h1 {
   color: white;
 }
 
+.upvote {
+  color: black;
+  top: 30px;
+  right: 50px;
+  position: absolute;
+}
+
+.downvote {
+  color: black;
+  top: 50px;
+  right: 50px;
+  position: absolute;
+}
+
+.title {
+  text-decoration: underline;
+}
+
+.restroom {
+  height: 40px;
+  width: 50px;
+}
+
+.classBody {
+  position: relative;
+}
+
