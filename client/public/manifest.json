@@ -19,6 +19,7 @@
     }
   ],
   "start_url": ".",
+  "scope": "https://boiling-scrubland-07440.herokuapp.com/",
   "display": "standalone",
   "theme_color": "#ffffff",
   "background_color": "#ffffff"
